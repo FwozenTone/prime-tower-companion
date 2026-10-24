@@ -1,0 +1,8 @@
+__pycache__/
+*.py[cod]
+.DS_Store
+*.log
+.venv/
+*.gcode
+*.3mf
+*.3mf.ipt.json
