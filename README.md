@@ -1,6 +1,6 @@
 # Orca Prime Tower Wizard - for tool changers
 
-Used to generate a custom prime tower that can be used in with multi-material prints instead of the slicer generated prime tower.  For instance PLA print with PETG supports.  Avoids difficulties of having mixed materials prime cleanly by preventing them from priming over the top of each other.
+Used to generate a custom prime tower that can be used with multi-material prints instead of the slicer generated prime tower.  For instance PLA print with PETG supports.  Avoids difficulties of having mixed materials prime cleanly by preventing them from priming over the top of each other.
 
 Takes an existing 3mf as input and generates a custom prime tower that exactly matches the filaments used to print the objects/supports on the plate. 
 
