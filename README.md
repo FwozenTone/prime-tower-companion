@@ -28,7 +28,7 @@ Prime Tower Wizard assumes that the object heights, layer height (or variable la
 
 | Application | Version | Purpose |
 | --- | --- | --- |
-| [Prime Tower Wizard](apps/isolated-prime-tower-v1.3.1/) | 1.3.1 | Generate the tower project, open it in Orca, and audit exported G-code. |
+| [Prime Tower Wizard](apps/isolated-prime-tower-v1.3.2/) | 1.3.2 | Generate the tower project, open it in Orca, and audit exported G-code. |
 | [Tower Speed Ramp](apps/tower-speed-ramp-v1.0.1/) | 1.0.1 | Optional Orca post-processing script that gradually increases extrusion speed while priming after tool pickup. |
 
 The applications are independent. The wizard works without the ramping script.
@@ -69,11 +69,11 @@ Set-Location prime-tower-wizard
 1. Start the installer from the same Terminal window:
 
    ```sh
-   open "apps/isolated-prime-tower-v1.3.1/Install Prime Tower Wizard.command"
+   open "apps/isolated-prime-tower-v1.3.2/Install Prime Tower Wizard.command"
    ```
 
    Alternatively, open the downloaded folder in Finder and double-click that file.
-2. The installer asks in Terminal where to install. Enter a parent folder, or press Return for `~/Applications`. It creates `Tower_Companion_v1.3.1` inside that folder, creates the application and Dock shortcut, and opens it.
+2. The installer asks in Terminal where to install. Enter a parent folder, or press Return for `~/Applications`. It creates `Tower_Companion_v1.3.2` inside that folder, creates the application and Dock shortcut, and opens it.
 3. Optionally run `apps/tower-speed-ramp-v1.0.1/Install Tower Speed Ramp.command`. It also asks for a parent folder, creates `Tower_Speed_Ramp_v1.0.1` inside it, and prints a setup command using your chosen location.
 
 Enter `q` at either installation prompt to cancel. Paths containing spaces are supported. Earlier version folders remain available for rollback.
@@ -85,7 +85,7 @@ Close any older wizard session before launching the installed version.
 Keep the application folders in a permanent location. On Windows, use `Start Prime Tower Wizard.bat` inside the wizard folder. On Linux, run `sh start-prime-tower-wizard.sh`, or start the wizard directly:
 
 ```sh
-python3 apps/isolated-prime-tower-v1.3.1/tower_wizard.py
+python3 apps/isolated-prime-tower-v1.3.2/tower_wizard.py
 ```
 
 For ramping, use the full path to your Python executable and the post-processing script as described below.
@@ -126,9 +126,11 @@ The script audits before and after modification, replaces the working export onl
 
 For the Voron workflow, ramping applies at export/send; normal slicer preview retains the original speeds. Inspect the exported plain G-code to see modified speeds. Time estimates are not recalculated.
 
-See the [wizard guide](apps/isolated-prime-tower-v1.3.1/README.md) and [ramping guide](apps/tower-speed-ramp-v1.0.1/README.md) for detailed usage and limitations. The versioned guides are preserved snapshots and include historical validation notes.
+See the [wizard guide](apps/isolated-prime-tower-v1.3.2/README.md) and [ramping guide](apps/tower-speed-ramp-v1.0.1/README.md) for detailed usage and limitations. The versioned guides are preserved snapshots and include historical validation notes.
 
 ## Version preservation and rollback
+
+Wizard v1.3.2 prevents browser startup from blocking the local server and adds a macOS browser-launch timeout. Tower generation, slicing and auditing are unchanged. Reinstall this version and use its new Dock shortcut; older shortcuts still launch older installations.
 
 Wizard v1.3.1 and Speed Ramp v1.0.1 add installation-folder prompts. Their application runtime code is unchanged from v1.3 and v1.0. Those earlier folders remain archived snapshots; use the current versions above for new installations.
 
@@ -143,7 +145,7 @@ Wizard v1.3 runtime files, UI, tests and icons were compared byte for byte with 
 From the repository root:
 
 ```sh
-python3 -m unittest discover -s apps/isolated-prime-tower-v1.3.1 -p 'test_*.py'
+python3 -m unittest discover -s apps/isolated-prime-tower-v1.3.2 -p 'test_*.py'
 python3 -m unittest discover -s apps/tower-speed-ramp-v1.0.1 -p 'test_*.py'
 ```
 
