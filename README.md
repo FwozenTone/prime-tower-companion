@@ -29,7 +29,7 @@ The Python tools and launchers target macOS, Windows, and Linux. macOS has dedic
 **macOS / Linux:**
 
 ```sh
-cd "/full/path/to/your/chosen/folder"
+cd "/full/path/to/installation folder"
 git clone https://github.com/FwozenTone/prime-tower-companion.git
 cd prime-tower-companion
 ```
@@ -37,7 +37,7 @@ cd prime-tower-companion
 **Windows PowerShell:**
 
 ```powershell
-Set-Location -LiteralPath "C:\path\to\your\chosen\folder"
+Set-Location -LiteralPath "C:\path\to\installation folder"
 git clone https://github.com/FwozenTone/prime-tower-companion.git
 Set-Location prime-tower-companion
 ```
