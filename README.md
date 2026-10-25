@@ -42,10 +42,6 @@ git clone https://github.com/FwozenTone/prime-tower-companion.git
 Set-Location prime-tower-companion
 ```
 
-`git clone` downloads the tools and their version history. This public download requires no GitHub account or sign-in. Run it only once for this location; if the `prime-tower-companion` folder already exists, use your existing copy rather than cloning into it again.
-
-You are now inside the downloaded project folder. All relative paths below start here. Keep each application's files together. Python 3.10 or later and OrcaSlicer must also be installed before running the tools.
-
 ### 2. Install or launch the tools
 
 #### macOS
