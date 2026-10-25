@@ -8,8 +8,8 @@ Built around a Voron StealthChanger workflow using OrcaSlicer 2.4.2. The compani
 
 | Application | Version | Purpose |
 | --- | --- | --- |
-| [Prime Tower Wizard](apps/isolated-prime-tower-v1.3/) | 1.3 | Generate the tower project, open it in Orca, and audit exported G-code. |
-| [Tower Speed Ramp](apps/tower-speed-ramp-v1.0/) | 1.0 | Optional Orca post-processing script that gradually increases tower extrusion speed after tool pickup. |
+| [Prime Tower Wizard](apps/isolated-prime-tower-v1.3.1/) | 1.3.1 | Generate the tower project, open it in Orca, and audit exported G-code. |
+| [Tower Speed Ramp](apps/tower-speed-ramp-v1.0.1/) | 1.0.1 | Optional Orca post-processing script that gradually increases tower extrusion speed after tool pickup. |
 
 The applications are independent. The wizard works without the ramping script.
 
@@ -28,9 +28,11 @@ Download and extract the repository, or clone it. Keep each application’s file
 
 ### macOS
 
-1. Open `apps/isolated-prime-tower-v1.3/Install Prime Tower Wizard.command`.
-2. The installer copies the wizard to `~/Documents/voron/projects/Tower_Companion_v1.3`, creates its application and Dock shortcut, and opens it.
-3. Optionally run `apps/tower-speed-ramp-v1.0/Install Tower Speed Ramp.command`. It installs the separate post-processor into `~/Documents/voron/projects/Tower_Speed_Ramp_v1.0` and prints a setup command.
+1. Open `apps/isolated-prime-tower-v1.3.1/Install Prime Tower Wizard.command`.
+2. The installer asks in Terminal where to install. Enter a parent folder, or press Return for `~/Applications`. It creates `Tower_Companion_v1.3.1` inside that folder, creates the application and Dock shortcut, and opens it.
+3. Optionally run `apps/tower-speed-ramp-v1.0.1/Install Tower Speed Ramp.command`. It also asks for a parent folder, creates `Tower_Speed_Ramp_v1.0.1` inside it, and prints a setup command using your chosen location.
+
+Enter `q` at either installation prompt to cancel. Paths containing spaces are supported. Earlier version folders remain available for rollback.
 
 Close any older wizard session before launching the installed version.
 
@@ -39,7 +41,7 @@ Close any older wizard session before launching the installed version.
 Keep the application folders in a permanent location. On Windows, use `Start Prime Tower Wizard.bat` inside the wizard folder. On Linux, run `sh start-prime-tower-wizard.sh`, or start the wizard directly:
 
 ```sh
-python3 apps/isolated-prime-tower-v1.3/tower_wizard.py
+python3 apps/isolated-prime-tower-v1.3.1/tower_wizard.py
 ```
 
 For ramping, use the full path to your Python executable and the post-processing script as described below.
@@ -69,7 +71,7 @@ Regenerate after changing model geometry, materials or layer heights. Do not spl
 In the generated tower project, configure **Process > Others > Post Processing Scripts** with the following as the **last** script. Replace all paths with absolute paths on your computer:
 
 ```text
-"/absolute/path/to/python3" "/absolute/path/to/tower-speed-ramp-v1.0/orca_tower_ramp.py" --project "/absolute/path/to/saved-tower.3mf" --start-percent 25 --volume 5
+"/absolute/path/to/python3" "/absolute/path/to/tower-speed-ramp-v1.0.1/orca_tower_ramp.py" --project "/absolute/path/to/saved-tower.3mf" --start-percent 25 --volume 5
 ```
 
 Orca appends the G-code filename. Do not add one yourself. On Windows, use the full path to `python.exe`.
@@ -80,9 +82,11 @@ The script audits before and after modification, replaces the working export onl
 
 For the Voron workflow, ramping applies at export/send; normal slicer preview retains the original speeds. Inspect the exported plain G-code to see modified speeds. Time estimates are not recalculated.
 
-See the [wizard guide](apps/isolated-prime-tower-v1.3/README.md) and [ramping guide](apps/tower-speed-ramp-v1.0/README.md) for detailed usage and limitations. The versioned guides are preserved snapshots and include historical validation notes.
+See the [wizard guide](apps/isolated-prime-tower-v1.3.1/README.md) and [ramping guide](apps/tower-speed-ramp-v1.0.1/README.md) for detailed usage and limitations. The versioned guides are preserved snapshots and include historical validation notes.
 
 ## Version preservation and rollback
+
+Wizard v1.3.1 and Speed Ramp v1.0.1 add installation-folder prompts. Their application runtime code is unchanged from v1.3 and v1.0. Those earlier folders remain archived snapshots; use the current versions above for new installations.
 
 The versioned application folders are complete snapshots. Before any application changes, copy its entire folder into a new version directory and edit only that copy. Version the two applications independently; never overwrite an earlier complete version.
 
@@ -95,8 +99,8 @@ Wizard v1.3 runtime files, UI, tests and icons were compared byte for byte with 
 From the repository root:
 
 ```sh
-python3 -m unittest discover -s apps/isolated-prime-tower-v1.3 -p 'test_*.py'
-python3 -m unittest discover -s apps/tower-speed-ramp-v1.0 -p 'test_*.py'
+python3 -m unittest discover -s apps/isolated-prime-tower-v1.3.1 -p 'test_*.py'
+python3 -m unittest discover -s apps/tower-speed-ramp-v1.0.1 -p 'test_*.py'
 ```
 
 Synthetic tests do not replace reviewing the final slice or testing the export hook and physical print on the target machine. The separate ramping utility still requires end-to-end GUI export/send and hardware validation.
