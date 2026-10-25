@@ -1,4 +1,4 @@
-# Prime Tower Companion
+# Prime Tower Wizard
 
 Material-isolated priming towers for multi-toolhead 3D printers using OrcaSlicer, with an optional, independent volume-based speed ramp.
 
