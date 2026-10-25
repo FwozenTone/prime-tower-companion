@@ -24,11 +24,51 @@ The Python tools and launchers target macOS, Windows, and Linux. macOS has dedic
 
 ## Installation
 
-Download and extract the repository, or clone it. Keep each application’s files together.
+### 1. Create a local folder and download the tools
 
-### macOS
+Open **Terminal** on macOS/Linux, or **PowerShell** on Windows. Run the commands below one line at a time. They create a folder called `FwozenTone` in your home directory and download this project into it. You can choose another parent folder if preferred.
 
-1. Open `apps/isolated-prime-tower-v1.3.1/Install Prime Tower Wizard.command`.
+First check that Git is installed:
+
+```text
+git --version
+```
+
+If the command is not found, install Git using the [official Git installation instructions](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git), reopen Terminal or PowerShell, and try again. On macOS, running this command may offer to install Apple's command-line tools; complete that installation first.
+
+**macOS / Linux:**
+
+```sh
+mkdir -p "$HOME/FwozenTone"
+cd "$HOME/FwozenTone"
+git clone https://github.com/FwozenTone/prime-tower-companion.git
+cd prime-tower-companion
+```
+
+**Windows PowerShell:**
+
+```powershell
+New-Item -ItemType Directory -Force -Path "$HOME/FwozenTone"
+Set-Location "$HOME/FwozenTone"
+git clone https://github.com/FwozenTone/prime-tower-companion.git
+Set-Location prime-tower-companion
+```
+
+`git clone` downloads the tools and their version history. This public download requires no GitHub account or sign-in. Run it only once for this location; if the `prime-tower-companion` folder already exists, use your existing copy rather than cloning into it again.
+
+You are now inside the downloaded project folder. All relative paths below start here. Keep each application's files together. Python 3.10 or later and OrcaSlicer must also be installed before running the tools.
+
+### 2. Install or launch the tools
+
+#### macOS
+
+1. Start the installer from the same Terminal window:
+
+   ```sh
+   open "apps/isolated-prime-tower-v1.3.1/Install Prime Tower Wizard.command"
+   ```
+
+   Alternatively, open the downloaded folder in Finder and double-click that file.
 2. The installer asks in Terminal where to install. Enter a parent folder, or press Return for `~/Applications`. It creates `Tower_Companion_v1.3.1` inside that folder, creates the application and Dock shortcut, and opens it.
 3. Optionally run `apps/tower-speed-ramp-v1.0.1/Install Tower Speed Ramp.command`. It also asks for a parent folder, creates `Tower_Speed_Ramp_v1.0.1` inside it, and prints a setup command using your chosen location.
 
@@ -36,7 +76,7 @@ Enter `q` at either installation prompt to cancel. Paths containing spaces are s
 
 Close any older wizard session before launching the installed version.
 
-### Windows and Linux
+#### Windows and Linux
 
 Keep the application folders in a permanent location. On Windows, use `Start Prime Tower Wizard.bat` inside the wizard folder. On Linux, run `sh start-prime-tower-wizard.sh`, or start the wizard directly:
 
