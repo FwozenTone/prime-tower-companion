@@ -38,16 +38,16 @@ The Python tools and launchers target macOS, Windows, and Linux. macOS has dedic
 
 ```sh
 cd "/full/path/to/installation folder"
-git clone https://github.com/FwozenTone/prime-tower-companion.git
-cd prime-tower-companion
+git clone https://github.com/FwozenTone/prime-tower-wizard.git
+cd prime-tower-wizard
 ```
 
 **Windows PowerShell:**
 
 ```powershell
 Set-Location -LiteralPath "C:\path\to\installation folder"
-git clone https://github.com/FwozenTone/prime-tower-companion.git
-Set-Location prime-tower-companion
+git clone https://github.com/FwozenTone/prime-tower-wizard.git
+Set-Location prime-tower-wizard
 ```
 
 ### 2. Install or launch the tools
