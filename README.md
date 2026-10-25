@@ -28,7 +28,7 @@ Prime Tower Wizard assumes that the object heights, layer height (or variable la
 
 | Application | Version | Purpose |
 | --- | --- | --- |
-| [Prime Tower Wizard](apps/isolated-prime-tower-v1.3.4/) | 1.3.4 | Generate the tower project, open it in Orca, and audit exported G-code. |
+| [Prime Tower Wizard](apps/isolated-prime-tower-v1.3.5/) | 1.3.5 | Generate the tower project, open it in Orca, and audit exported G-code. |
 | [Tower Speed Ramp](apps/tower-speed-ramp-v1.0.1/) | 1.0.1 | Optional Orca post-processing script that gradually increases extrusion speed while priming after tool pickup. |
 
 The applications are independent. The wizard works without the ramping script.
@@ -69,7 +69,7 @@ Set-Location prime-tower-wizard
 1. Start the installer from the same Terminal window:
 
    ```sh
-   open "apps/isolated-prime-tower-v1.3.4/Install Prime Tower Wizard.command"
+   open "apps/isolated-prime-tower-v1.3.5/Install Prime Tower Wizard.command"
    ```
 
    Alternatively, open the downloaded folder in Finder and double-click that file.
@@ -85,7 +85,7 @@ Close any older wizard session before launching the installed version.
 Keep the application folders in a permanent location. On Windows, use `Start Prime Tower Wizard.bat` inside the wizard folder. On Linux, run `sh start-prime-tower-wizard.sh`, or start the wizard directly:
 
 ```sh
-python3 apps/isolated-prime-tower-v1.3.4/tower_wizard.py
+python3 apps/isolated-prime-tower-v1.3.5/tower_wizard.py
 ```
 
 For ramping, use the full path to your Python executable and the post-processing script as described below.
@@ -126,11 +126,11 @@ The script audits before and after modification, replaces the working export onl
 
 For the Voron workflow, ramping applies at export/send; normal slicer preview retains the original speeds. Inspect the exported plain G-code to see modified speeds. Time estimates are not recalculated.
 
-See the [wizard guide](apps/isolated-prime-tower-v1.3.4/README.md) and [ramping guide](apps/tower-speed-ramp-v1.0.1/README.md) for detailed usage and limitations. The versioned guides are preserved snapshots and include historical validation notes.
+See the [wizard guide](apps/isolated-prime-tower-v1.3.5/README.md) and [ramping guide](apps/tower-speed-ramp-v1.0.1/README.md) for detailed usage and limitations. The versioned guides are preserved snapshots and include historical validation notes.
 
 ## Version preservation and rollback
 
-Wizard v1.3.4 uses the stable installation folder `Tower_Companion` and app name **Prime Tower Wizard.app**. The Mac installer asks in Terminal before replacing existing wizard installations in the selected parent folder. Accepted replacements back up complete previous installations and repoint their Dock shortcuts. Quit the running wizard before upgrading. Version numbers remain in the source directories and application metadata.
+Wizard v1.3.5 uses the stable installation folder `Tower_Companion` and app name **Prime Tower Wizard.app**. The Mac installer asks in Terminal before replacing existing wizard installations in the selected parent folder. Accepted replacements remove previous installed copies and repoint their Dock shortcuts; no installed-version backups are retained. Quit the running wizard before upgrading. Version numbers remain in the source directories and application metadata.
 
 Wizard v1.3.3 hides raw generation logs in an expandable troubleshooting section and adds a native macOS Dock launcher. Clicking its icon reopens the browser page; quitting the application stops its server. Close older wizard instances and use the new version’s Dock shortcut after installation.
 
@@ -149,7 +149,7 @@ Wizard v1.3 runtime files, UI, tests and icons were compared byte for byte with 
 From the repository root:
 
 ```sh
-python3 -m unittest discover -s apps/isolated-prime-tower-v1.3.4 -p 'test_*.py'
+python3 -m unittest discover -s apps/isolated-prime-tower-v1.3.5 -p 'test_*.py'
 python3 -m unittest discover -s apps/tower-speed-ramp-v1.0.1 -p 'test_*.py'
 ```
 
