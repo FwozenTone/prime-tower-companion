@@ -154,3 +154,15 @@ python3 -m unittest discover -s apps/tower-speed-ramp-v1.0.1 -p 'test_*.py'
 ```
 
 Synthetic tests do not replace reviewing the final slice or testing the export hook and physical print on the target machine. The separate ramping utility still requires end-to-end GUI export/send and hardware validation.
+
+## License and disclaimer
+
+Copyright (C) 2026 FwozenTone.
+
+Prime Tower Wizard and Tower Speed Ramp, including the versioned source directories in this repository, are licensed under the **GNU General Public License, version 3 only (GPL-3.0-only)**. You may use, redistribute and modify the software under those terms. See [LICENSE](LICENSE) for the complete license.
+
+**Provided “as is,” without warranty.** To the extent permitted by applicable law, the software is provided without any express or implied warranty, including warranties of merchantability or fitness for a particular purpose. You assume the risk of using the software and its generated output.
+
+**Limitation of liability.** Except where applicable law requires otherwise or an agreement in writing provides otherwise, copyright holders and parties modifying or distributing the software are not liable for damages arising from its use or inability to operate, as specified in GPL v3 sections 15–17. Those sections contain the controlling warranty and liability terms; this summary adds no restrictions to the GPL.
+
+Review generated projects and G-code before printing, and verify their suitability for your printer, tool-change configuration and materials. Passing the software's audit does not guarantee physical print safety, collision clearance or print quality.
