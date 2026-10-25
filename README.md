@@ -9,7 +9,7 @@ Built around a Voron StealthChanger workflow using OrcaSlicer 2.4.2. The compani
 | Application | Version | Purpose |
 | --- | --- | --- |
 | [Prime Tower Wizard](apps/isolated-prime-tower-v1.3.1/) | 1.3.1 | Generate the tower project, open it in Orca, and audit exported G-code. |
-| [Tower Speed Ramp](apps/tower-speed-ramp-v1.0.1/) | 1.0.1 | Optional Orca post-processing script that gradually increases tower extrusion speed after tool pickup. |
+| [Tower Speed Ramp](apps/tower-speed-ramp-v1.0.1/) | 1.0.1 | Optional Orca post-processing script that gradually increases extrusion speed while priming after tool pickup. |
 
 The applications are independent. The wizard works without the ramping script.
 
