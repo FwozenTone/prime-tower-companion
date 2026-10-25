@@ -24,21 +24,7 @@ The Python tools and launchers target macOS, Windows, and Linux. macOS has dedic
 
 ## Installation
 
-### 1. Create a local folder and download the tools
-
-Create a folder wherever you want to keep the tools, using Finder (macOS), File Explorer (Windows), or your Linux file manager. Choose any folder name and location.
-
-Open **Terminal** on macOS/Linux, or **PowerShell** on Windows. Run the commands below one line at a time.
-
-First check that Git is installed:
-
-```text
-git --version
-```
-
-If the command is not found, install Git using the [official Git installation instructions](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git), reopen Terminal or PowerShell, and try again. On macOS, running this command may offer to install Apple's command-line tools; complete that installation first.
-
-Replace the example path below with the full path to the folder you just created. Keep the quotation marks, especially if your path contains spaces. The clone command creates a `prime-tower-companion` subfolder inside your chosen folder.
+### 1. Create an installation folder and download the tools.
 
 **macOS / Linux:**
 
