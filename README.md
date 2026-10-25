@@ -4,6 +4,14 @@ Material-isolated priming towers for multi-toolhead 3D printers using OrcaSlicer
 
 Built around a Voron StealthChanger workflow using OrcaSlicer 2.4.2. The companion generates a multipart tower on the selected plate, then lets you review placement and slice in Orca. It does not replace the printer’s tool-change macros or send print commands.
 
+<img src="docs/images/isolated-prime-tower.png" alt="Generated tower in OrcaSlicer, showing separate internal priming sections and rounded outer ribs" width="360">
+
+**The generated tower:** Each filament has an internal priming section, with different material types kept separate vertically. The outer wall and rounded ribs support the structure. This example shows the tower in OrcaSlicer, where you can review and adjust its placement before the final slice.
+
+<img src="docs/images/prime-tower-wizard-ui.jpg" alt="Prime Tower Wizard project selection, Orca location and tower dimension controls" width="640">
+
+**The wizard:** Select your original 3MF and plate, choose an output folder, and configure tower dimensions and minimum priming volume. The wizard generates the tower project for review in Orca and provides checks for the exported G-code. The screenshot shows the upper portion of the interface.
+
 ## Applications
 
 | Application | Version | Purpose |
