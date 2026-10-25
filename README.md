@@ -26,7 +26,9 @@ The Python tools and launchers target macOS, Windows, and Linux. macOS has dedic
 
 ### 1. Create a local folder and download the tools
 
-Open **Terminal** on macOS/Linux, or **PowerShell** on Windows. Run the commands below one line at a time. They create a folder called `FwozenTone` in your home directory and download this project into it. You can choose another parent folder if preferred.
+Create a folder wherever you want to keep the tools, using Finder (macOS), File Explorer (Windows), or your Linux file manager. Choose any folder name and location.
+
+Open **Terminal** on macOS/Linux, or **PowerShell** on Windows. Run the commands below one line at a time.
 
 First check that Git is installed:
 
@@ -36,11 +38,12 @@ git --version
 
 If the command is not found, install Git using the [official Git installation instructions](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git), reopen Terminal or PowerShell, and try again. On macOS, running this command may offer to install Apple's command-line tools; complete that installation first.
 
+Replace the example path below with the full path to the folder you just created. Keep the quotation marks, especially if your path contains spaces. The clone command creates a `prime-tower-companion` subfolder inside your chosen folder.
+
 **macOS / Linux:**
 
 ```sh
-mkdir -p "$HOME/FwozenTone"
-cd "$HOME/FwozenTone"
+cd "/full/path/to/your/chosen/folder"
 git clone https://github.com/FwozenTone/prime-tower-companion.git
 cd prime-tower-companion
 ```
@@ -48,8 +51,7 @@ cd prime-tower-companion
 **Windows PowerShell:**
 
 ```powershell
-New-Item -ItemType Directory -Force -Path "$HOME/FwozenTone"
-Set-Location "$HOME/FwozenTone"
+Set-Location -LiteralPath "C:\path\to\your\chosen\folder"
 git clone https://github.com/FwozenTone/prime-tower-companion.git
 Set-Location prime-tower-companion
 ```
