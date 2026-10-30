@@ -28,7 +28,7 @@ Prime Tower Wizard assumes that the object heights, layer height (or variable la
 
 | Application | Version | Purpose |
 | --- | --- | --- |
-| [Prime Tower Wizard](apps/isolated-prime-tower-v1.3.6/) | 1.3.6 | Generate the tower project, open it in Orca, and audit exported G-code. |
+| [Prime Tower Wizard](apps/isolated-prime-tower-v1.3.8/) | 1.3.8 | Generate a material-isolated tower project and open it in Orca for slicing. |
 | [Tower Speed Ramp](apps/tower-speed-ramp-v1.0.1/) | 1.0.1 | Optional Orca post-processing script that gradually increases extrusion speed while priming after tool pickup. |
 
 The applications are independent. The wizard works without the ramping script.
@@ -69,14 +69,14 @@ Set-Location prime-tower-wizard
 1. Start the installer from the same Terminal window:
 
    ```sh
-   open "apps/isolated-prime-tower-v1.3.6/Install Prime Tower Wizard.command"
+   open "apps/isolated-prime-tower-v1.3.8/Install Prime Tower Wizard.command"
    ```
 
    Alternatively, open the downloaded folder in Finder and double-click that file.
 2. The installer asks in Terminal where to install. Enter a parent folder, or press Return for `~/Applications`. It creates `Tower_Wizard` inside that folder, creates the application and Dock shortcut, and opens it.
 3. Optionally run `apps/tower-speed-ramp-v1.0.1/Install Tower Speed Ramp.command`. It also asks for a parent folder, creates `Tower_Speed_Ramp_v1.0.1` inside it, and prints a setup command using your chosen location.
 
-Enter `q` at either installation prompt to cancel. Paths containing spaces are supported. Earlier version folders remain available for rollback.
+Enter `q` at either installation prompt to cancel. Paths containing spaces are supported.
 
 Close any older wizard session before launching the installed version.
 
@@ -85,7 +85,7 @@ Close any older wizard session before launching the installed version.
 Keep the application folders in a permanent location. On Windows, use `Start Prime Tower Wizard.bat` inside the wizard folder. On Linux, run `sh start-prime-tower-wizard.sh`, or start the wizard directly:
 
 ```sh
-python3 apps/isolated-prime-tower-v1.3.6/tower_wizard.py
+python3 apps/isolated-prime-tower-v1.3.8/tower_wizard.py
 ```
 
 For ramping, use the full path to your Python executable and the post-processing script as described below.
@@ -94,9 +94,9 @@ For ramping, use the full path to your Python executable and the post-processing
 
 1. Configure and save the original project in Orca, including materials, supports and layer heights.
 2. In the wizard, select the original 3MF, plate number and Orca executable. Set tower width, rib size, minimum priming volume and material options.
-3. Use the automatic slice/build/verify workflow, or the guided manual export workflow if command-line slicing is unavailable.
-4. Open the generated tower project in Orca. Review the plate and move the entire `IPT_ASSEMBLY` in XY if needed. Save the project, keeping its matching `.3mf.ipt.json` sidecar beside it.
-5. Slice and inspect Orca’s preview. Export G-code and audit the final export against the saved tower project. A previous audit does not cover later placement or slicing changes.
+3. Click **Slice & build tower**. If Orca command-line slicing fails, the guided reference G-code controls appear with the current settings retained.
+4. The generated project opens in Orca when selected. Review the plate and move the entire `IPT_ASSEMBLY` in XY if needed.
+5. Slice and inspect Orca’s preview before printing. Optional automatic post-tower validation can be enabled in the wizard.
 
 Regenerate after changing model geometry, materials or layer heights. Do not split, rotate, scale or rename the tower assembly. Retain **By layer**, **As object list**, tower-first ordering and the disabled built-in prime tower.
 
@@ -104,8 +104,8 @@ Regenerate after changing model geometry, materials or layer heights. Do not spl
 
 - One continuous internal priming section per actually used filament, up to 12 tools.
 - Separate material types stay in separate vertical sections. An active tool of the same material type can maintain an idle tool’s section to reduce swaps.
-- Rounded external ribs, an outer frame, and a requested 15 mm zero-gap outer brim.
-- Configurable width, rib size and minimum priming volume; defaults are 30 mm, 25 mm and 5 mm³.
+- Rounded external ribs, an outer frame, and a configurable zero-gap outer brim.
+- Configurable width, rib size, brim width and minimum priming volume; defaults are 30 mm, 5 mm, 5 mm and 5 mm³.
 - Automatic rigid frame-material selection with a manual override. The preference is a heuristic, not a measured strength guarantee.
 - Tower height ends at the last relevant reference pickup layer. Variable layer boundaries follow the reference print when compatible with the configured tools.
 - The audit checks tower visits after tool changes, material confinement, layer coverage and priming volume. It cannot inspect motion hidden inside firmware macros or certify physical collision clearance.
@@ -126,30 +126,18 @@ The script audits before and after modification, replaces the working export onl
 
 For the Voron workflow, ramping applies at export/send; normal slicer preview retains the original speeds. Inspect the exported plain G-code to see modified speeds. Time estimates are not recalculated.
 
-See the [wizard guide](apps/isolated-prime-tower-v1.3.6/README.md) and [ramping guide](apps/tower-speed-ramp-v1.0.1/README.md) for detailed usage and limitations. The versioned guides are preserved snapshots and include historical validation notes.
+See the [wizard guide](apps/isolated-prime-tower-v1.3.8/README.md) and [ramping guide](apps/tower-speed-ramp-v1.0.1/README.md) for detailed usage and limitations.
 
-## Version preservation and rollback
+## Version
 
-Wizard v1.3.6 uses the stable installation folder `Tower_Wizard` and app name **Prime Tower Wizard.app**. The Mac installer asks in Terminal before replacing existing wizard installations in the selected parent folder. Accepted replacements remove previous installed copies and repoint their Dock shortcuts; no installed-version backups are retained. Quit the running wizard before upgrading. Version numbers remain in the source directories and application metadata.
-
-Wizard v1.3.3 hides raw generation logs in an expandable troubleshooting section and adds a native macOS Dock launcher. Clicking its icon reopens the browser page; quitting the application stops its server. Close older wizard instances and use the new version’s Dock shortcut after installation.
-
-Wizard v1.3.2 prevents browser startup from blocking the local server and adds a macOS browser-launch timeout. Tower generation, slicing and auditing are unchanged. Reinstall this version and use its new Dock shortcut; older shortcuts still launch older installations.
-
-Wizard v1.3.1 and Speed Ramp v1.0.1 add installation-folder prompts. Their application runtime code is unchanged from v1.3 and v1.0. Those earlier folders remain archived snapshots; use the current versions above for new installations.
-
-The versioned application folders are complete snapshots. Before any application changes, copy its entire folder into a new version directory and edit only that copy. Version the two applications independently; never overwrite an earlier complete version.
-
-To roll back, launch or install the required earlier wizard. For ramping, update Orca’s post-processing command to point to the required earlier script, or remove the hook to disable ramping. Keep the matching generated project and sidecar together.
-
-Wizard v1.3 runtime files, UI, tests and icons were compared byte for byte with the supplied working backup. Only its installer and guide were adjusted for the versioned destination and obsolete integrated-ramping file backup.
+Prime Tower Wizard v1.3.8 uses the stable installation folder `Tower_Wizard` and app name **Prime Tower Wizard.app**. Quit the running wizard before upgrading. The repository retains only the current Prime Tower Wizard source folder; Tower Speed Ramp is versioned independently.
 
 ## Tests
 
 From the repository root:
 
 ```sh
-python3 -m unittest discover -s apps/isolated-prime-tower-v1.3.6 -p 'test_*.py'
+python3 -m unittest discover -s apps/isolated-prime-tower-v1.3.8 -p 'test_*.py'
 python3 -m unittest discover -s apps/tower-speed-ramp-v1.0.1 -p 'test_*.py'
 ```
 
